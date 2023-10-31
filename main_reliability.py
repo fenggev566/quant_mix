@@ -57,9 +57,8 @@ def main():
     model = create_model(args)
     # print(model)
     
-    #state_dict =t.load('/home/likai/mix_vgg/vgg_quant_test/lsq_sparse/out/VGG16_ImageNet_bmix_s0_20230521-044956/VGG16_ImageNet_bmix_s0_best.pth.tar')['state_dict']
-    state_dict =t.load("/home/gaoconghao/mix_lcd/quant_mix_lr/out/vgg863_64/VGG16_ImageNet_bmix_s0_1bit_best.pth.tar")['state_dict']
-    #state_dict =t.load("/home/gaoconghao/mix_lcd/quant_mix_lr/out/vgg16_70/VGG16_ImageNet_bmix_s0_1bit_best.pth.tar")['state_dict']
+    state_dict =t.load("/home/liqiufeng/mix_lcd/quant_mix_lr/out/vgg863_64/VGG16_ImageNet_bmix_s0_1bit_best.pth.tar")['state_dict']
+    #state_dict =t.load("/home/liqiufeng/mix_lcd/quant_mix_lr/out/vgg16_70/VGG16_ImageNet_bmix_s0_1bit_best.pth.tar")['state_dict']
     for k , v in state_dict.items():
         if 'module.features.5.weight' in k:
             quan_shape = v.shape
@@ -67,9 +66,6 @@ def main():
             for i in range(v.numel()):
                 # quan_shape = v.shape
                 v = v.view(-1).cuda(1)
-                print(v[0])
-                print(v[2])
-                print(v[i])
                 dd = v[i]
                 dd_t = dd.clone()
                 new_value = 0 - dd
@@ -79,9 +75,9 @@ def main():
                 # new_value = dd + 1
                 # new_value = new_value / 2**(6)
                 v[i] = new_value
-                print(v[0])
-                print(v[2])
-                print(v[i])
+                # print(v[0])
+                # print(v[2])
+                # print(v[i])
                 v = v.reshape(quan_shape).cuda(1) 
 
                 tbmonitor.writer.add_graph(model, input_to_model=train_loader.dataset[0][0].unsqueeze(0))
