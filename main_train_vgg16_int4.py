@@ -54,8 +54,7 @@ def main():
     #Create the model
     model = create_model(args)
     print(model)
-    # state_dict =t.load('/home/likai/mix_vgg/vgg_quant_test/lsq_sparse/out/VGG16_ImageNet_bmix_s0_20230521-044956/VGG16_ImageNet_bmix_s0_best.pth.tar')['state_dict']
-   
+
     tbmonitor.writer.add_graph(model, input_to_model=train_loader.dataset[0][0].unsqueeze(0))
     logger.info('Inserted quantizers into the original model')
 
@@ -64,7 +63,7 @@ def main():
 
     model.to(args.device.type)
 
-    # state_dict= t.load("/home/dingchenchen/test_quant/lsq-net/out/VGG16_ImageNet_a8w8_20230221-222558/VGG16_ImageNet_a8w8_best.pth.tar")['state_dict']
+    state_dict= t.load("/home/liqiufeng/test_quant/lsq-net/out/VGG16_ImageNet_a8w8_20230221-222558/VGG16_ImageNet_a8w8_best.pth.tar")['state_dict']
 
     # model.load_state_dict(state_dict,strict=False)
 
