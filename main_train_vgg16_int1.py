@@ -57,9 +57,7 @@ def main():
     model = create_model(args)
     print(model)
     
-    #state_dict =t.load('/home/likai/mix_vgg/vgg_quant_test/lsq_sparse/out/VGG16_ImageNet_bmix_s0_20230521-044956/VGG16_ImageNet_bmix_s0_best.pth.tar')['state_dict']
-    #state_dict =t.load('/home/likai/mix_vgg/vgg_quant_test/lsq_sparse/out/VGG16_ImageNet_bmix_s0_20230526-180905/VGG16_ImageNet_bmix_s0_best.pth.tar')['state_dict']
-    state_dict =t.load("/home/gaoconghao/mix_lcd/quant_mix_lr/out/vgg863_64/VGG16_ImageNet_bmix_s0_1bit_best.pth.tar")['state_dict']
+    state_dict =t.load("/home/liqiufeng/mix_lcd/quant_mix_lr/out/vgg863_64/VGG16_ImageNet_bmix_s0_1bit_best.pth.tar")['state_dict']
    
 
     tbmonitor.writer.add_graph(model, input_to_model=train_loader.dataset[0][0].unsqueeze(0))
@@ -180,7 +178,7 @@ def main():
 
     tbmonitor.writer.close()  # close the TensorBoard
     logger.info('Program completed successfully ... exiting ...')
-    logger.info('If you have any questions or suggestions, please contact chenchen')
+    logger.info('If you have any questions or suggestions, please contact liqiufeng')
 
 
 if __name__ == "__main__":
