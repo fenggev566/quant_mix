@@ -8,8 +8,8 @@ dataloader:
   # Number of categories in the specified dataset (choices: 1000, 10)
   num_classes: 1000
   # Path to dataset directory
-  path: /home/LiQiufeng/datasets/imagenet_new/ILSVRC/Data/CLS-LOC/
-  # path: /home/gaoconghao/mix_lcd/quant_mix_lr/data_new/
+  path: /home/liqiufeng/datasets/imagenet_new/ILSVRC/Data/CLS-LOC/
+  # path: /home/liqiufeng/mix_lcd/quant_mix_lr/data_new/
   # Size of mini-batch
   batch_size: 32
   # Portion of training dataset to set aside for validation (range: [0, 1))
