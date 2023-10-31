@@ -117,7 +117,7 @@ def main():
 
     tbmonitor.writer.close()  # close the TensorBoard
     logger.info('Program completed successfully ... exiting ...')
-    logger.info('If you have any questions or suggestions, please contact chenchen')
+    logger.info('If you have any questions or suggestions, please contact liqiufeng')
 
 
 if __name__ == "__main__":
